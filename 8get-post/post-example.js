@@ -1,0 +1,36 @@
+// 实例表单通过post提交并输出数据
+var http = require('http');
+var querystring = require('querystring');
+    // 定义了一个post变量，用于暂存请求体的信息
+var postHTML = 
+  '<html><head><meta charset="utf-8"><title>菜鸟教程 Node.js 实例</title></head>' +
+  '<body>' +
+  '<form method="post">' +
+  '网站名： <input name="name"><br>' +
+  '网站 URL： <input name="url"><br>' +
+  '<input type="submit">' +
+  '</form>' +
+  '</body></html>';
+// 创建一个服务，req请求，res响应
+http.createServer(function (req, res) {
+  var body = "";
+  req.on('data', function (chunk) {
+    body += chunk;
+  });
+  req.on('end', function () {
+    // 解析参数
+    body = querystring.parse(body);
+    // 设置响应头部信息及编码
+    res.writeHead(200, {'Content-Type': 'text/html; charset=utf8'});
+ 
+    // 如果有输入的数据，则输出输入的数据，若果没有输入的数据，则依旧显示输入表单
+    if(body.name && body.url) { // 输出提交的数据
+        res.write("网站名：" + body.name);
+        res.write("<br>");
+        res.write("网站 URL：" + body.url);
+    } else {  // 输出表单
+        res.write(postHTML);
+    }
+    res.end();
+  });
+}).listen(3000);
