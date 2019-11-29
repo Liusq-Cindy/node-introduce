@@ -7,7 +7,7 @@ const errorOutput = fs.createWriteStream('./stderr.log');
 // 自定义的简单记录器。
 const logger = new Console({ stdout: output, stderr: errorOutput });
 // 像控制台一样使用它。
-const count = 5;
+const count = 1314;
 logger.log('count: %d', count);
 // 在 stdout.log 中: count 5
 // 另外还有很多其他的用法
