@@ -9,7 +9,7 @@ var writerStream = fs.createWriteStream('output1.txt');
 writerStream.write(data,'UTF8');
 
 // 标记文件末尾
-writerStream.end();
+// writerStream.end();
 
 // 处理流事件 --> data, end, and error
 writerStream.on('finish', function() {

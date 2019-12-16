@@ -1,14 +1,21 @@
+// 附：自定义高亮设置 快捷键command+shift+p --->  setting首选项 ---- > 自定义todohighlight.keywords
 // LOOK:这是module + http + url + events事件模块的综合小demo
+
+
 // 1、引入 http 模块：http 是提供 Web 服务的基础
 const http = require("http");
+
 // 2、引入 url 模块：url 是对用户提交的路径进行解析
 const url = require("url");
+
 // 3、MAIN:引入模块
 // （1）require json.js这个模块
 var Rejson = require('./json');
 // （2）也可以require hello2这个模块，调用其方法。与上面模块接口的唯一变化是使用 module.exports = Hello 代替了exports.world = function(){}。 在外部引用该模块时，其接口对象就是要输出的对象本身，而不是原先的 exports。
+
 var Rehtml = require('./html'); 
 rehtml = new Rehtml(); 
+
 // 4、引入events事件触发监听模块：它有很多功能，比如将this传给监听器，保证只能触发一次，切换异步同步方式，错误事件处理，eventEmitter类等等
 const EventEmitter = require('events');
 class MyEmitter extends EventEmitter {}

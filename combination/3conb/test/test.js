@@ -11,7 +11,7 @@ const validator = require('../index');
 // });
 
 describe('表单校验', () => {
-    // describe可嵌套使用，区分多个单元
+    // describe可嵌套使用，区分多个单元；以下为呼吸校验和体温校验
     describe('【呼吸校验】: 1-100整数', () => {
         // 加入before、after,可以用来实现其他功能
         before(function () {
