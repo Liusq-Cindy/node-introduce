@@ -1,6 +1,6 @@
 // 附：自定义高亮设置 快捷键command+shift+p --->  setting首选项 ---- > 自定义todohighlight.keywords
 // LOOK:这是module + http + url + events事件模块的综合小demo
-
+// 功能：引入模块，监听events事件触发，接口发送请求时，调用模块中的方法，根据不同路由返回不同数据并记录次数
 
 // 1、引入 http 模块：http 是提供 Web 服务的基础
 const http = require("http");
