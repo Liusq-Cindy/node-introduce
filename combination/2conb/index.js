@@ -1,5 +1,5 @@
-// LOOK:这是fs + zlib + console模块的综合小demo
-// TODO: fs模块和流模块，console的控制组合
+// LOOK:这是fs + console模块的综合小demo
+// 功能：读取input.txt文件内容，补充名字，生成新的文件
 
 // 流（stream）是 Node.js 中处理流式数据的抽象接口。 stream 模块用于构建实现了流接口的对象。
 
@@ -10,9 +10,8 @@
     // Transform - 在读写过程中可以修改或转换数据的 Duplex 流（例如 zlib.createDeflate()）。
 
 // LOOK:开始
-// 1 读写流：从input.txt中读取数据，写入到output.txt
+// 1、从input.txt中读取数据，存储到data中
 var fs = require("fs");
-var zlib = require('zlib');
 var data = '';
 // 创建可读流
 var readerStream = fs.createReadStream('input.txt');
@@ -34,12 +33,13 @@ new Promise( (resolve, reject) => {
     const errorOutput = fs.createWriteStream('./stderr.log');
     const logger = new Console({ stdout: output, stderr: errorOutput });
     var count = 1;
-    logger.log('count: %d', ++count);
+    logger.log('count: %d', ++count, data);
     resolve(data);
   })
   readerStream.on('error',function(err){
     console.log(err.stack)
   })
+// 1、将data中的数据补充完全，写入文件中
 }).then( data => {
   // 使用 utf8 编码写入数据
   writerStream.write( 'liusq: ' + data,'UTF8');
@@ -52,6 +52,23 @@ new Promise( (resolve, reject) => {
   writerStream.on('error', function(err){
     console.log(err.stack);
   });
+})
+
+//以上只是为了介绍node的流事件，其实fs有自带的读写操作：fs.readFile fs.writeFile 读写文件  
+fs.readFile('input.txt',function(error,data){
+  if(error){
+      console.log(error);
+      return false;
+  }
+  console.log('fs读取', data.toString());  //读取出所有行的信息  
+})
+
+fs.writeFile('123.txt','你好nodejs 覆盖','utf8',function(error){
+  if(error){
+      console.log(error);
+      return false;
+  }
+  console.log('写入成功');
 })
 
 // 几乎所有的 Node.js 应用都在某种程度上使用了流，除了这里的fs模块，还有http模块请求响应等等。
@@ -93,20 +110,3 @@ new Promise( (resolve, reject) => {
  8. fs.rmdir  删除目录 
  9. fs.unlink 删除文件 
 */
-
-//fs.readFile fs.writeFile 读写文件  
-fs.readFile('input.txt',function(error,data){
-  if(error){
-      console.log(error);
-      return false;
-  }
-  console.log('3333', data.toString());  //读取出所有行的信息  
-})
-
-fs.writeFile('123.txt','你好nodejs 覆盖','utf8',function(error){
-  if(error){
-      console.log(error);
-      return false;
-  }
-  console.log('写入成功');
-})
