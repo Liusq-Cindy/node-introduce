@@ -1,7 +1,8 @@
 // 附：自定义高亮设置 快捷键command+shift+p --->  setting首选项 ---- > 自定义todohighlight.keywords
 // LOOK:这是module + http + url + events事件模块的综合小demo
-// 功能：引入模块，监听events事件触发，接口发送请求时，调用模块中的方法，根据不同路由返回不同数据并记录次数
+// 功能：根据不同路由，调用返回不同文件内的方法，返回数据并记录页面的访问次数
 
+// 第一步：引入模块
 // 1、引入 http 模块：http 是提供 Web 服务的基础
 const http = require("http");
 
@@ -12,7 +13,6 @@ const url = require("url");
 // （1）require json.js这个模块
 var Rejson = require('./json');
 // （2）也可以require hello2这个模块，调用其方法。与上面模块接口的唯一变化是使用 module.exports = Hello 代替了exports.world = function(){}。 在外部引用该模块时，其接口对象就是要输出的对象本身，而不是原先的 exports。
-
 var Rehtml = require('./html'); 
 rehtml = new Rehtml(); 
 
@@ -27,6 +27,7 @@ const myEmitter1 = new MyEmitter();
   // 注册一个监听器 .once只处理一次  .on一直会监听
   myEmitter1.on('event', pong);
 
+// 第二步：创建服务，监听端口，处理事件
 http.createServer(function (request, response) {
     // 发送 HTTP 头部, HTTP 状态值: 200 : OK, 内容类型: application/json
     response.writeHead(200, {'Content-Type': 'application/json'});
