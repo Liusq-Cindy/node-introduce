@@ -10,7 +10,7 @@
     // Transform - 在读写过程中可以修改或转换数据的 Duplex 流（例如 zlib.createDeflate()）。
 
 // LOOK:开始
-// 1、从input.txt中读取数据，存储到data中
+// 第一步：从input.txt中读取数据，存储到data中
 var fs = require("fs");
 var data = '';
 // 创建可读流
@@ -39,7 +39,7 @@ new Promise( (resolve, reject) => {
   readerStream.on('error',function(err){
     console.log(err.stack)
   })
-// 1、将data中的数据补充完全，写入文件中
+// 第二步、将data中的数据补充完全，写入文件中
 }).then( data => {
   // 使用 utf8 编码写入数据
   writerStream.write( 'liusq: ' + data,'UTF8');

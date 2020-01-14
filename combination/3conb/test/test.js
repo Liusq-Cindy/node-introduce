@@ -1,4 +1,4 @@
-// 这是一个mocha单元测试的内容
+// 这是一个mocha单元测试的内容：单元测试是我们在编写的一小段代码时，用于检验该目标代码的输入输出值是否是如我们预期一致
 // mac 中在命令行输入 npx mocha test.js 可启动单元测试
 const assert = require('assert');
 
@@ -27,7 +27,7 @@ describe('表单校验', () => {
             console.log('  afterEach.');
         });
         it('呼吸，小数1.2', () => {
-            assert.strictEqual(validator('breath', 1.2), 'wrong');
+            assert.strictEqual(validator('breath', 1), 'wrong');
         });
         it('呼吸，小于1不允许', () => {
             assert.strictEqual(validator('breath', 0), 'wrong');
