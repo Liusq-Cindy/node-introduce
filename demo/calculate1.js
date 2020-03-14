@@ -16,13 +16,13 @@ function formatDate(item){
   console.log('sd', sheets);
   // 遍历 sheet
   sheets.forEach(function(sheet){
-    let answer = [['提交人','提交时间','反馈建议','演讲内容','语言表达','综合印象','PPT效果', '平均得分']];
+    let answer = [['提交人','提交时间','演讲内容','语言表达','综合印象','PPT效果','反馈建议','平均得分']];
     // 读取每行内容,计算除表头外每一行的平均值
     for(var rowId in sheet['data']){
         var row=sheet['data'][rowId];
         var aver = 0;
         var sum = 0;
-        for(var i = 3; i < row.length ; i++) {
+        for(var i = 2; i < row.length-1 ; i++) {
           sum += +row[i];
         }
         aver = sum/4;
@@ -32,7 +32,7 @@ function formatDate(item){
         }
     }
     // 计算总平均值
-    let allaver = [[`${item.split('-')[0]}总平均得分`]];
+    let allaver = [[`${item.split('-')[1]}总平均得分`]];
     let allsum = 0;
     answer.forEach((item, index) => {
       if (index !== 0) {
