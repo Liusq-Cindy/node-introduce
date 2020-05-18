@@ -1,0 +1,28 @@
+{
+  "name": "lsq",
+  "version": "1.0.0",
+  "description": "**[node菜鸟教程](https://www.runoob.com/nodejs/nodejs-tutorial.html)**  **[node官方文档](https://nodejs.org/en/)**  **[node中文官方文档](http://nodejs.cn/api/)**",
+  "main": "1hello.js",
+  "dependencies": {
+    "koa": "^1.6.0",
+    "node-xlsx": "^0.15.0",
+    "semver": "^7.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Liusq-Cindy/node-introduce.git"
+  },
+  "keywords": [
+    "lsq19941028"
+  ],
+  "author": "lsq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Liusq-Cindy/node-introduce/issues"
+  },
+  "homepage": "https://github.com/Liusq-Cindy/node-introduce#readme"
+}
