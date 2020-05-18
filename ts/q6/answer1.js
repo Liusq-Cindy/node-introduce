@@ -15,10 +15,8 @@ var nums = [4, 2, 2, 3, 2, 1];
 var getNextMax = function (nums) {
     var resultArray = [];
     for (var i = 0; i < nums.length; i++) {
-        console.log('iiii', i);
         if (i === 0) {
             var oi = true;
-            console.log('o8i', i);
             for (var j = 1; j < nums.length; j++) {
                 if (nums[j] > nums[i]) {
                     resultArray.push(nums[j]);
@@ -64,7 +62,6 @@ var getNextMax = function (nums) {
         }
         if (i === nums.length - 1) {
             var mi = true;
-            console.log('oi', i);
             for (var j = 0; j < nums.length - 1; j++) {
                 if (nums[j] > nums[i]) {
                     resultArray.push(nums[j]);
